@@ -1,0 +1,387 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+	<title>TuneBox | Artists</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" type="text/css" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://apis.google.com/js/api.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+	<script src="assets/js/ajaxCalls.js"></script>
+	<script src="assets/js/searchForm.js"></script>
+	<script src="assets/js/signInInit-mutual.js"></script>
+	<script src="assets/js/admin-activ.js"></script>
+
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+		.search-wrapper {
+			display: flex;
+			align-items: center;
+		}
+
+		#search-category {
+			width: 50%;
+			color: #ff8d8d;
+			background-color: #161616;
+			margin-right: 10px;
+		}
+
+
+
+			#search-category option {
+				color: dimgrey !important;
+			}
+
+		#res-head {
+			margin-top: 20px;
+		}
+
+		.pagination {
+			margin-top: 50px;
+			margin-left: 50px;
+			margin-bottom: 30px;
+			width: 100%;
+		}
+
+			.pagination button {
+				height: 40px;
+				margin-right: 10px;
+				margin-bottom: 10px;
+				width: 50px;
+			}
+
+				.pagination button:hover,
+				.pagination button.active {
+					background-color: #381b1b;
+					color: white;
+				}
+
+		tr:nth-child(even) {
+			background-color: #ff8d8d03;
+		}
+
+		@media screen and (max-width: 576px) {
+
+			#banner > div {
+				width: 96% !important;
+			}
+		}
+	</style>
+	<link href="assets/css/dropdown.css" rel="stylesheet" />
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+				<!-- Header -->
+				<header id="header">
+					<div></div>
+					<div id="search" class="alt">
+						<form id="search-form">
+							<div class="search-wrapper">
+								<span class="search-button-indicator"></span>
+								<select id="search-category">
+									<option id="artistS" value="artist">By Artist</option>
+									<option id="songS" value="song">By Song Name/Lyrics</option>
+								</select>
+								<input type="text" name="query" id="query" placeholder="Explore TuneBox Songs" />
+								<i id="searchSubmit" class="fas fa-search search-icon"></i>
+							</div>
+						</form>
+					</div>
+
+
+					<div class="signIn">
+						<span class="disconnected">
+							<button onclick="window.location='Signup-TuneBox.html'" class="signUp">Sign Up</button>
+							<button onclick="window.location='Login-TuneBox.html'" class="logIn">Log In</button>
+						</span>
+						<span class="connected">
+							<img onclick="myFunction()" class="userAvatar dropbtn" src="#" alt="user avatar" />
+							<div class="dropdown">
+								<div id="myDropdown" class="dropdown-content">
+									<a href="MyFavorites.html"><img id="menu-fav" width="20" src="images/heart.png" /></a>
+									<!--<a href="#">My Account</a>-->
+									<a onclick="logOut()">Log Out</a>
+								</div>
+							</div>
+						</span>
+					</div>
+					<!-- Search -->
+				</header>
+
+				<!-- Banner -->
+				<header id="fav-head">
+					<img style="margin-left:10px;" width="250" src="images/tunebox_artists.png" />
+				</header>
+				<section id="banner">
+					<br />
+					<br />
+
+					<div style="margin: auto; height: 800px; width: 85%; overflow: auto; border-top: 4px solid #F73859; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); border-radius: 7px;">
+						<table id="artists-p">
+						</table>
+					</div>
+				</section>
+
+				<!-- Section -->
+				<section>
+					<header class="major">
+						<h2>Featured</h2>
+					</header>
+
+					<div class="slider-container">
+						<div class="slider-content">
+							<div id="slide1" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide2" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide3" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide4" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide5" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide6" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide7" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide8" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide9" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+						</div>
+
+						<div class="slider-nav">
+							<button class="prev" disabled>&#8249;</button>
+							<button class="next">&#8250;</button>
+						</div>
+					</div>
+
+					<div style="margin-top:30px;" class="slider-container">
+						<header class="major">
+							<h2>Explore TuneBox Artists</h2>
+						</header>
+						<div class="slider-content">
+							<div id="slide10" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide11" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide12" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide13" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide14" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide15" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide16" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide17" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide18" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+						</div>
+
+						<div class="slider-nav">
+							<button class="prev" disabled>&#8249;</button>
+							<button class="next">&#8250;</button>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+
+		<!-- Sidebar -->
+		<div id="sidebar">
+			<div class="inner">
+
+				<!-- Menu -->
+				<nav id="menu">
+					<img src="tboxLogo.png" width="180" />
+
+					<ul style="padding-top:50px;">
+						<li><a href="index.html">Homepage</a></li>
+						<li><a href="TuneBox-Arttists.html">TuneBox Artists</a></li>
+						<li><a href="TuneBox-Quiz.html"><img width="150" src="images/tunebox_quiz.png" /></a></li>
+					</ul>
+				</nav>
+				<div id="search2" class="alt">
+					<form id="search-form1">
+						<div class="search-wrapper">
+							<span class="search-button-indicator"></span>
+							<select id="search-category1">
+								<option id="artistS1" value="artist">By Artist</option>
+								<option id="songS1" value="song">By Song Name/Lyrics</option>
+							</select>
+
+							<input type="text" name="query1" id="query1" placeholder="Explore TuneBox Songs" />
+							<i id="searchSubmit1" class="fas fa-search search-icon"></i>
+						</div>
+					</form>
+				</div>
+				<footer id="footer">
+					<p class="copyright">&copy; Untitled. TuneBox All rights reserved</a>.</p>
+				</footer>
+
+			</div>
+		</div>
+
+
+	</div>
+
+
+
+    <script>
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+		}
+
+
+		function logOut() {
+			let tmp = sessionStorage['searchWord'];
+			sessionStorage.clear();
+			sessionStorage['searchWord'] = "page reloaded: please search again";
+            location.reload();
+
+        }
+	</script>
+    <script>
+		$(document).ready(function () {
+
+            const api = "https://localhost:7248/api/Artists/GetAllArtists";
+            ajaxCall("GET", api, "", successCB11, errorCB);
+
+		});
+
+		function successCB11(data) {
+			let container = $('#artists-p');
+			
+			for (let i = 0; i < data.length; i++) {
+				let tr = $('<tr>');
+				let td = $('<td>');
+               
+				let a = $('<a>');
+				a.css('display', 'flex');
+				a.css('align-items', 'center');
+				let num = i + 1 + ".  ";
+				let name = data[i].stageName;
+				if (data[i].fullName != " ")
+					name += " | " + data[i].fullName;
+				let img = $('<img>');
+				img.attr("src", data[i].imgUrl);
+				img.css("height", "50px");
+				img.css("margin-left", "25px");
+				img.css("margin-right", "10px");
+				img.css("border-radius", "5px");
+				a.append(num);
+				a.append(img);
+				a.append(name);
+				a.attr("href", "ArtistPage.html?id=" + data[i].stageName);
+				a.css("border-bottom", "none");
+				a.css("color", "#ff5c78");
+				td.append(a);
+				tr.append(td);
+				container.append(tr);
+			}
+		}
+            
+        
+
+        function errorCB(err) {
+            alert("Could not complete your request, Server might be down");
+        }
+
+	</script>
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/JavaScript.js"></script>
+</body>
+</html>

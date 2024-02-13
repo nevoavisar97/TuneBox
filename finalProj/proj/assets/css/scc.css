@@ -1,0 +1,20 @@
+﻿
+.formBTN input {
+    font-size: 14px;
+    letter-spacing: normal;
+    text-transform: none;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    color: white !important;
+    width: 100%;
+    background-color: #F73859;
+    box-shadow: none;
+    border-radius: 500px;
+    ;
+    min-block-size: 48px;
+}
+
+    .formBTN input:hover {
+        transform: scale(1.04);
+        background-color: #f74a67;
+    }
