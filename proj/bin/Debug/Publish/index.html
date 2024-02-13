@@ -1,0 +1,408 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+	<title>TuneBox | Unbox the Music</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" type="text/css" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://apis.google.com/js/api.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+	<script src="assets/js/ajaxCalls.js"></script>
+	<script src="assets/js/artistDBinit.js"></script>
+	<script src="assets/js/songsDBinit.js"></script>
+	<script src="assets/js/searchForm.js"></script>
+	<script src="assets/js/signInInit-mutual.js"></script>
+	<script src="assets/js/admin-activ.js"></script>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+		.search-wrapper {
+			display: flex;
+			align-items: center;
+		}
+
+		#search-category {
+			width: 50%;
+			color: #ff8d8d;
+			background-color: #161616;
+			margin-right: 10px;
+		}
+
+
+
+			#search-category option {
+				color: dimgrey !important;
+			}
+
+		@media screen and (max-width: 576px) {
+
+			.sp-details {
+				padding-left: 0 !important;
+			}
+
+			.sp-img img {
+				margin-top: 20px;
+				width: 100% !important;
+			}
+		}
+	</style>
+	<link href="assets/css/dropdown.css" rel="stylesheet" />
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+				<!-- Header -->
+				<header id="header">
+					<div></div>
+					<div id="search" class="alt">
+						<form id="search-form">
+							<div class="search-wrapper">
+								<span class="search-button-indicator"></span>
+								<select id="search-category">
+									<option id="artistS" value="artist">By Artist</option>
+									<option id="songS" value="song">By Song Name/Lyrics</option>
+								</select>
+								<input type="text" name="query" id="query" placeholder="Explore TuneBox Songs" />
+								<i id="searchSubmit" class="fas fa-search search-icon"></i>
+							</div>
+						</form>
+					</div>
+
+			
+					<div class="signIn">
+						<span class="disconnected">
+							<button onclick="window.location='Signup-TuneBox.html'" class="signUp">Sign Up</button>
+							<button onclick="window.location='Login-TuneBox.html'" class="logIn">Log In</button>
+						</span>
+						<span class="connected">
+							<img onclick="myFunction()" class="userAvatar dropbtn" src="#" alt="user avatar" />
+							<div class="dropdown">
+								<div id="myDropdown" class="dropdown-content">
+									<a href="MyFavorites.html"><img id="menu-fav" width="20" src="images/heart.png" /></a>
+									<!--<a href="#">My Account</a>-->
+									<a onclick="logOut()">Log Out</a>
+								</div>
+							</div>
+						</span>
+					</div>
+					<!-- Search -->
+				</header>
+
+				<!-- Banner -->
+				<section id="banner">
+				
+					<div class="content">
+						<header>
+							<h1>
+								TuneBox Spotlight
+							</h1>
+							<p style="color:#ff8d8d">Song of the Week</p>
+						</header>
+						<div class="sp-container">
+							<div class="sp-img">
+								<img src="https://i1.sndcdn.com/artworks-000463468011-ws8yh6-t500x500.jpg" />
+							</div> <!--//אולי למשוך api של דירוגים-->
+							<div class="sp-details">
+								<h3 id="songName"></h3>
+								<p>Drake </p>
+								<br />
+								<div style="width:72%" class="collapsible">Lyrics</div>
+								<div class="content1">
+									<p id="lyrics">
+										I chose to believe every word I was fed<br>
+										And I thought the coals on my back were a product of the lack you left<br>
+										When you stepped back and racked your brain for a reason to stay<br>
+										But you could not seem to formulate any such thought in your head<br>
+										So you left with nothing more than a reason you kept silent<br>
+										And my mind would riot, stuck in self-perpetuated mental violence and dreams kept private<br>
+										The ambition to fix this wishlist of selfish, misfit, realist missions<br>
+										Contained within a vision of wishful thinking and sinking deep into a new bit of misproportioned emotions<br>
+										Leaking through a seeping truth, constructed by my need to feel important<br>
+										When you would look back and think of all the little things you regret<br>
+										I just wanted you think of me when you'd think back to all the things you regret<br>
+										I spent so much time convincing myself that the rest of this mess that I stressed<br>
+										Within this relationship was a product of the world's oppressions<br>
+										Not my deep desire to be needed<br>
+										And it's hard to admit, but I guess I've come to terms with the fact that I just want to be needed<br>
+										And I convinced myself that I needed to be needed<br>
+										And if that was true, I would still be smiling like you still today, but for different reasons<br>
+										I chose to dismiss the possible instance that the lips I love to kiss could form the words "goodbye"<br>
+										And it was a simple lie, but I told it to you, like the captain of a sinking ship<br>
+										Choosing to believe the bottom of the ocean was a better source of oxygen<br>
+										It's so nice and I still chose to believe, I misinterpreted your dialect and everything you said about it<br>
+										Your diction and diatribe, posture, body language, and connotations all pointing in the same direction<br>
+										The selection of contingent messages postponed until further notice<br>
+										Because I was ashamed to admit the problem and pretend your happiness came from me and that your happiness was important<br>
+										But we aborted the sordid truths we once distorted when I saw the shape of your dress when you wore it<br>
+										And that was enough until it wasn't<br>
+										And that's when you finally felt supported<br>
+										So the others courted you and you mentally recorded and endorsed<br>
+										The force perform, of compliments you received came in<br>
+										And you felt empowered enough to take your final bow<br>
+										And find love within the arms of another, instead of this heart of mine<br>
+										And that's fine, because I would do the same and I would leave me<br>
+										Not because I'm useless and not because I'm broken<br>
+										Not because I'm sad and not because I'm worthless<br>
+										But because I saw value in your smile and not in your values<br>
+										And I'm sorry and I love you<br>
+										And that's why I can finally sleep at night<br>
+										Because you are free and you can thrive<br>
+										And I'm just happy I got to be a part of your life<br>
+										I'm just happy I got to be a part of the journey that you call your life<br>
+										And I finally feel fine, 'cause I spent so long trying to change you<br>
+										Not realizing I was the one who needed to change<br>
+										I was selfish to assume you loved me more than you loved yourself<br>
+										Even though I never felt the same<br>
+										And there's so many things that my selfishness tried to take away<br>
+										But you were the one that was the hardest to watch walk away<br>
+										But thank.
+									</p>
+								</div>
+								<div id="apple-container">
+									<iframe src="https://genius.com/songs/3315890/apple_music_player" frameborder="0" allowtransparency="true" style="width: 100%;  color:white !important; height: 50px !important;"></iframe>
+								</div>
+
+							</div>
+						</div>
+
+						<!--<ul class="actions">
+			<li><a href="#" class="button big"></a></li>
+		</ul>-->
+
+					</div>
+				</section>
+
+				<!-- Section -->
+				<section>
+					<header class="major">
+						<h2>Featured</h2>
+					</header>
+
+					<div class="slider-container">
+						<div class="slider-content">
+							<div id="slide1" class="slide">
+                                <img src="#" />
+                                <h3></h3>
+                                <h5></h5>
+							</div>
+							<div id="slide2" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide3" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide4" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide5" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide6" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide7" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide8" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide9" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+						</div>
+
+						<div class="slider-nav">
+							<button class="prev"  disabled>&#8249;</button>
+							<button class="next" >&#8250;</button>
+						</div>
+					</div>
+
+
+					<div style="margin-top:30px;" class="slider-container">
+						<header class="major">
+							<h2>Explore TuneBox Artists</h2>
+						</header>
+						<div class="slider-content">
+							<div id="slide10" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide11" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide12" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide13" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide14" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide15" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide16" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide17" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide18" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+						</div>
+
+						<div class="slider-nav">
+							<button class="prev" disabled>&#8249;</button>
+							<button class="next">&#8250;</button>
+						</div>
+					</div>
+				</section>
+
+				<!-- Section -->
+				
+
+			</div>
+		</div>
+
+		<!-- Sidebar -->
+		<div id="sidebar">
+			<div class="inner">
+
+				<!-- Menu -->
+				<nav id="menu">
+					<img src="tboxLogo.png" width="180" />
+					
+					<ul  style="padding-top:50px;">
+						<li><a href="index.html">Homepage</a></li>
+						<li><a href="TuneBox-Arttists.html">TuneBox Artists</a></li>
+						<li><a href="TuneBox-Quiz.html"><img width="150" src="images/tunebox_quiz.png" /></a></li>
+					</ul>
+				</nav>
+				<div id="search2" class="alt">
+					<form id="search-form1">
+						<div class="search-wrapper">
+							<span class="search-button-indicator"></span>
+							<select id="search-category1">
+								<option id="artistS1" value="artist">By Artist</option>
+								<option id="songS1" value="song">By Song Name/Lyrics</option>
+							</select>
+
+							<input type="text" name="query1" id="query1" placeholder="Explore TuneBox Songs" />
+							<i id="searchSubmit1" class="fas fa-search search-icon"></i>
+						</div>
+					</form>
+				</div>
+				<footer  id="footer">
+					<p class="copyright">&copy; Untitled. TuneBox All rights reserved</a>.</p>
+				</footer>
+
+			</div>
+		</div>
+
+	</div>
+
+
+
+
+
+    <script>
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+		}
+
+
+        function logOut() {
+            sessionStorage.clear();
+            location.reload();
+		}
+        $.ajax({
+            type: "GET",
+            url: "https://app.ticketmaster.com/discovery/v2/events.json?size=1&apikey=HXPkELDjTNQ4Kvt34M6CTD8vd1m8fA9q",
+            async: true,
+            dataType: "json",
+            success: function (json) {
+                console.log(json);
+                // Parse the response.
+                // Do other things.
+            },
+            error: function (xhr, status, err) {
+                // This time, we do not end up here!
+            }
+        });
+	</script>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/JavaScript.js"></script>
+</body>
+</html>

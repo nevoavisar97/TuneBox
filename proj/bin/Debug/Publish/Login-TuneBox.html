@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+	<title>TuneBox | Login</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<script src="assets/js/ajaxCalls.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://apis.google.com/js/api.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+	<link href="assets/css/singINsignUP.css" rel="stylesheet" />
+    <style>
+        @media screen and (max-width: 576px) {
+            .card {
+                margin-top: 0px;
+                margin-bottom: 100px;
+                color: white;
+                width: 734px;
+                background-color: #000;
+                border-radius: 8px;
+                padding: 76px 66px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+        }
+	</style>
+</head>
+<body>
+	<div class="header1">
+        <a href="index.html"><img src="tboxLogo.png" /></a></div>
+	<div class="container1">
+		<div class="card">
+			<div class="title">Log in to TuneBox</div>
+			<form id="logIn-form">
+				<div class="form-group">
+					<label for="username">Email</label>
+					<input type="email" id="email2" name="username" required>
+				</div>
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" id="password2" name="password" required>
+				</div>
+				<div class="formBTN">
+					<input type="submit" value="Log In">
+				</div>
+			</form>
+
+			<div id="sign_up_log" class="text-center">
+				Don't have an account? <a href ="Signup-TuneBox.html">Sign up for TuneBox</a>
+			</div>
+		</div>
+	</div>
+
+
+
+<!-- Scripts -->
+<script>
+	$(document).ready(function () {
+        $('#logIn-form').submit(login)
+		function login() {
+			var logged = sessionStorage['logged'];
+			if (logged != null) {
+				alert("You are currently logged in to your account");
+			}
+			else {
+				const api = "https://proj.ruppin.ac.il/cgroup40/test2/tar1/api/Users/UserLogIn/" + $('#email2').val() + "/" + $('#password2').val();
+				//const api = "https://proj.ruppin.ac.il/cgroup40/test2/tar1/api/User/UserLogIn/" + val[0] + "%40" + val[1] + "/" + $('#password').val();
+				ajaxCall("POST", api, { email: $('#email2').val(), password: $('#password2').val() }, successCB, errorCB);
+				return false;
+			}
+		}
+		function successCB(user) {
+			sessionStorage['logged'] = JSON.stringify(user);
+				$(window.location).attr('href', 'index.html');
+
+			}
+
+			function errorCB(err) {
+				if (err.status === 500) {
+					alert("Error: " + err.responseText);
+				} else {
+					alert("Sorry, we could not complete your request because the server connection might have been lost or the data was undefined.");
+				}
+			}
+		
+	});
+</script>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

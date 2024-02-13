@@ -1,0 +1,650 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+	<title>TuneBox | Unbox the Music</title>
+	<meta charset="utf-8" />
+	<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<script src="https://apis.google.com/js/api.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+	<script src="assets/js/ajaxCalls.js"></script>
+	<script src="assets/js/searchForm.js"></script>
+	<script src="assets/js/ArtistPageINIT.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="assets/js/signInInit-mutual.js"></script>
+	<script src="assets/js/admin-activ.js"></script>
+
+	<link href="assets/css/dropdown.css" rel="stylesheet" />
+	<link href="assets/css/scc.css" rel="stylesheet" />
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+		#ap-song-t {
+			width: 100%;
+			background-color: #0f0f0f;
+		}
+
+
+			#ap-song-t td {
+				width: 45%;
+				vertical-align: top;
+				padding: 14px;
+				font-size: 12px;
+			}
+
+			#ap-song-t table {
+				margin: 0;
+				padding-right: 15px;
+			}
+
+
+
+
+			#ap-song-t li {
+				color: #F73859;
+				margin-bottom: 5px;
+			}
+
+
+				#ap-song-t li:not(:last-child) {
+					border-bottom: 1px solid #444;
+				}
+
+		tr:nth-child(even) {
+			background-color: #ff8d8d03;
+		}
+
+
+
+		body, h1, h2, h3, h4, h5, h6, p {
+			font-family: 'Poppins', sans-serif !important;
+		}
+
+		.search-wrapper {
+			display: flex;
+			align-items: center;
+		}
+
+		#search-category {
+			width: 50%;
+			color: #ff8d8d;
+			background-color: #161616;
+			margin-right: 10px;
+		}
+
+
+			#search-category option {
+				color: dimgrey !important;
+			}
+
+		.collapsible {
+			background-color: #121212;
+			width: 460px;
+			border-bottom: 3px solid #f73859;
+		}
+
+		.sp-container {
+			margin-left: 40px;
+		}
+
+			.sp-container img {
+				margin-right: 40px;
+			}
+
+		.ap-details {
+			padding-right: 15px;
+		}
+
+		.content1 {
+			width: 460px;
+			background-color: black;
+			height: 750px;
+		}
+
+		.card {
+			background-color: #1b1b1b;
+		}
+
+		.container {
+			max-width: 100%;
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		.comments {
+			padding: 15px;
+			border-radius: 5px;
+			background: #1e1e1e;
+			width: 460px;
+			overflow-y: auto;
+			margin-bottom: 50px;
+			max-height: 400px;
+		}
+
+		#add-c {
+			width: 90%;
+			padding-left: 10px;
+		}
+
+		.popup {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.7);
+			z-index: 9999; /* Ensure the popup is on top of other content */
+		}
+
+		.popup-content {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: #1f1f1f;
+			padding-top: 40px;
+			border-radius: 10px;
+			box-shadow: none; /* Remove the box shadow */
+		}
+
+			.popup-content .card {
+				padding-left: 40px;
+				padding-right: 40px;
+				padding-top: 20px;
+				padding-bottom: 30px;
+			}
+
+			.popup-content .formBTN {
+				text-align: center;
+				margin-top: 40px;
+			}
+
+			.popup-content .title {
+				padding-bottom: 15px;
+				font-size: 17px;
+				text-align: center;
+			}
+
+		#logIn-form {
+			font-size: 15px;
+		}
+
+		.close {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			font-size: 20px;
+			cursor: pointer;
+			margin-bottom: 5px;
+		}
+
+			.close:hover {
+				color: #f74a67;
+			}
+
+		.content1 {
+			display: block
+		}
+
+		#mobile-twitter {
+			display: none;
+		}
+
+		@media screen and (max-width: 576px) {
+			#mobile-twitter {
+				display: block;
+			}
+
+			#desk-twit {
+				display: none;
+			}
+
+			.content1 {
+				display: none;
+			}
+		}
+	</style>
+</head>
+
+<body class="is-preload">
+	
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+				<!-- Header -->
+				<header id="header">
+					<div></div>
+					<div id="search" class="alt">
+						<form id="search-form">
+							<div class="search-wrapper">
+								<span class="search-button-indicator"></span>
+								<select id="search-category">
+									<option id="artistS" value="artist">By Artist</option>
+									<option id="songS" value="song">By Song Name/Lyrics</option>
+								</select>
+								<input type="text" name="query" id="query" placeholder="Explore TuneBox Songs" />
+								<i id="searchSubmit" class="fas fa-search search-icon"></i>
+							</div>
+						</form>
+					</div>
+
+
+					<div class="signIn">
+						<span class="disconnected">
+							<button onclick="window.location='Signup-TuneBox.html'" class="signUp">Sign Up</button>
+							<button onclick="window.location='Login-TuneBox.html'" class="logIn">Log In</button>
+						</span>
+						<span class="connected">
+							<img onclick="myFunction()" class="userAvatar dropbtn" src="#" alt="user avatar" />
+							<div class="dropdown">
+								<div id="myDropdown" class="dropdown-content">
+									<a href="MyFavorites.html"><img id="menu-fav" width="20" src="images/heart.png" /></a>
+									<!--<a href="#">My Account</a>-->
+									<a onclick="logOut()">Log Out</a>
+								</div>
+							</div>
+						</span>
+					</div>
+
+				</header>
+
+				<!-- Banner -->
+				<section id="banner">
+					<div class="content">
+
+						<div class="sp-container">
+							<div class="sp-img">
+								<img id="ArtistImg" />
+								<br />
+								<br />
+								<div>
+									<div class="comments">
+										<div class="container  " style="width:500px;">
+											<div class="row d-flex">
+												<div id="cmt-jq" class="col">
+													<span style="color:dimgrey" id="new-ans"></span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="d-flex flex-start" id="add-c">
+										<img id="sp-avatar" class="rounded-circle shadow-1-strong "
+											 src="avatars/avatar5.png" alt="avatar" width="65"
+											 height="65" />
+										<div class="w-100">
+											<h5>Add a comment</h5>
+											<form id="cmt-form">
+												<div class="form-outline">
+													<textarea class="form-control" id="textAreaExample" rows="4" required></textarea>
+													<label class="form-label" for="textAreaExample">What is your view?</label>
+												</div>
+												<input style="float:right" type="submit" id="add-cmt" value="Add comment" />
+											</form>
+										</div>
+									</div>
+								</div>
+
+								<br />
+								<br />
+								<h4 class="mb-3" id="ap-song-head"></h4>
+								<div id="ap-songs" style="height: 266px; overflow: auto; border-top: 4px solid #F73859; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); border-radius:5px;">
+									<table id="ap-song-t">
+									</table>
+								</div>
+
+							</div>
+							<div class="sp-details ap-details">
+								<div style="display: flex; justify-content: space-between; max-width:95%;">
+									<h2 id="ap-name"></h2>
+								</div>
+								<a id="ap-full" href="#"></a>
+								<br />
+								<div class="collapsible">Description</div>
+								<div class="content1" style=" height:390px;">
+									<p id="ap-desc">
+
+									</p>
+								</div>
+								<br />
+								<br />
+								<div id="desk-twit"></div>
+
+							</div>
+						</div>
+				</section>
+
+				<div id="mobile-twitter"></div>
+
+				<!-- Section -->
+
+
+				<section style=" margin-bottom: 200px;">
+					<div style="margin-top:30px;" class="slider-container">
+						<header class="major">
+							<h2>Featured Artists</h2>
+						</header>
+						<div class="slider-content">
+							<div id="slide10" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide11" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide12" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide13" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide14" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide15" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide16" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide17" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide18" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+						</div>
+
+						<div class="slider-nav">
+							<button class="prev" disabled>&#8249;</button>
+							<button class="next">&#8250;</button>
+						</div>
+					</div>
+					<br />
+					<br />
+					<header class="major">
+						<h2>Explore TuneBox Songs</h2>
+					</header>
+
+					<div class="slider-container" style="margin-bottom:50px;">
+						<div class="slider-content">
+							<div id="slide1" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide2" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide3" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide4" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide5" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide6" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide7" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide8" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+							<div id="slide9" class="slide">
+								<img src="#" />
+								<h3></h3>
+								<h5></h5>
+							</div>
+						</div>
+
+						<div class="slider-nav">
+							<button class="prev" disabled>&#8249;</button>
+							<button class="next">&#8250;</button>
+						</div>
+					</div>
+				</section>
+
+
+			</div>
+		</div>
+
+		<!-- Sidebar -->
+		<div id="sidebar">
+			<div class="inner">
+
+				<!-- Menu -->
+				<nav id="menu">
+					<img src="tboxLogo.png" width="180" />
+
+					<ul style="padding-top:50px;">
+						<li><a href="index.html">Homepage</a></li>
+						<li><a href="TuneBox-Arttists.html">TuneBox Artists</a></li>
+						<li><a href="TuneBox-Quiz.html"><img width="150" src="images/tunebox_quiz.png" /></a></li>
+					</ul>
+				</nav>
+				<div id="search2" class="alt">
+					<form id="search-form1">
+						<div class="search-wrapper">
+							<span class="search-button-indicator"></span>
+							<select id="search-category1">
+								<option id="artistS1" value="artist">By Artist</option>
+								<option id="songS1" value="song">By Song Name/Lyrics</option>
+							</select>
+
+							<input type="text" name="query1" id="query1" placeholder="Explore TuneBox Songs" />
+							<i id="searchSubmit1" class="fas fa-search search-icon"></i>
+						</div>
+					</form>
+				</div>
+				<footer id="footer">
+					<p class="copyright">&copy; Untitled. TuneBox All rights reserved</a>.</p>
+				</footer>
+
+			</div>
+		</div>
+
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/JavaScript.js"></script>
+	<script>
+		var comment;
+		var comment1;
+		var newAns = false;
+		var noCmt;
+		var url = new URLSearchParams(window.location.search);
+		var artist = url.get('id');
+		$(document).ready(function () {
+			const api_a = "https://localhost:7248/api/ArtistComments/" + artist;
+			ajaxCall("GET", api_a, "", successCBb, errorCBb);
+
+			function successCBb(data) {
+				newAns = false;
+				if (data.length == 0) {
+					noCmt = true;
+					$('#new-ans').text("No comments yet");
+				}
+				else {
+					$("#new-ans").css("color", "white");
+					for (let i = 0; i < data.length; i++) {
+						let cdate = data[i].commentDate.toString();
+						let bdate = cdate.split("T");
+						let date = bdate[0] + " | " + bdate[1].split('.')[0];
+						const cmt = {
+							nickName: data[i].nickName,
+							commentText: data[i].commentText,
+							commentDate: date,
+							avatar: data[i].avatar
+						};
+						addComment1(cmt);
+					}
+				}
+			}
+			$('#cmt-form').submit(addComment);
+			function addComment() {
+				let currentDate = new Date();
+				let year = currentDate.getFullYear();
+				let month = String(currentDate.getMonth() + 1).padStart(2, '0');
+				let day = String(currentDate.getDate()).padStart(2, '0');
+				let hours = String(currentDate.getHours()).padStart(2, '0');
+				let minutes = String(currentDate.getMinutes()).padStart(2, '0');
+
+				let now = `${year}-${month}-${day}, ${hours}:${minutes}`;
+
+				if (sessionStorage['logged'] != null) {
+					user = JSON.parse(sessionStorage['logged']);
+					comment1 = {
+						nickName: user.userName,
+						artist: artist,
+						avatar: user.avatar,
+						commentText: $('#textAreaExample').val(),
+						commentDate: now
+					}
+					comment = {
+						nickName: user.userName,
+						artist: artist,
+						avatar: user.avatar,
+						commentText: $('#textAreaExample').val()
+					};
+				}
+				else {
+					comment = {
+						nickName: 'guest',
+						artist: artist,
+						avatar: 'avatars/avatar5.png',
+						commentText: $('#textAreaExample').val(),
+					}
+					comment1 = {
+						nickName: 'guest',
+						artistId: artist,
+						avatar: 'avatars/avatar5.png',
+						commentText: $('#textAreaExample').val(),
+						commentDate: now
+					}
+				}
+                const api = "https://localhost:7248/api/ArtistComments";
+				ajaxCall("POST", api, JSON.stringify(comment), successCBa, errorCBb);
+				return false;
+			}
+		});
+
+		function successCBa(data) {
+			newAns = true;
+			addComment1(comment1);
+		}
+
+		function errorCBb(err) {
+			alert("Sorry, we could not complete your request because the server connection might have been lost or the data was undefined.");
+		}
+
+		function addComment1(cmt) {
+			if (noCmt) {
+				$('#new-ans').text(" ");
+				noCmt = false;
+				$("#new-ans").css("color", "white");
+
+			}
+			if (!newAns) {
+				$('#cmt-jq').append(`
+		<div class="d-flex flex-start mb-4">
+		  <img id="sp-avatar" class="rounded-circle shadow-1-strong me-3 mr-1" src="${cmt.avatar}" alt="avatar" width="65" height="65" />
+		  <div class="card w-100">
+			<div class="card-body p-4">
+			  <div>
+				<h5 id="sp-user-cmnt">${cmt.nickName}</h5>
+				<p id="sp-date-cmt" class="small">${cmt.commentDate}</p>
+				<p id="sp-cmt">${cmt.commentText}</p>
+				<div class="d-flex justify-content-between align-items-center">
+				  <div class="d-flex align-items-center"></div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  `);
+			}
+			else {
+				$('#new-ans').append(`
+		<div class="d-flex flex-start mb-4">
+		  <img id="sp-avatar" class="rounded-circle shadow-1-strong me-3 mr-1" src="${cmt.avatar}" alt="avatar" width="65" height="65" />
+		  <div class="card w-100">
+			<div class="card-body p-4">
+			  <div>
+				<h5 id="sp-user-cmnt">${cmt.nickName}</h5>
+				<p id="sp-date-cmt" class="small">${cmt.commentDate}</p>
+				<p id="sp-cmt">${cmt.commentText}</p>
+				<div class="d-flex justify-content-between align-items-center">
+				  <div class="d-flex align-items-center"></div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  `);
+			}
+		}
+
+
+
+
+	</script>
+</body>
+</html>
